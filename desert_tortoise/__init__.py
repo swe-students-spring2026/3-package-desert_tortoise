@@ -1,7 +1,8 @@
 """Digital pet package."""
 
-from .parrot import Parrot
 from .pet import Pet
+from .tortoise import Tortoise
+from .parrot import Parrot
 from . import shelter
 
-__all__ = ["Pet", "Parrot", "shelter"]
+__all__ = ["Pet", "Tortoise", "Parrot", "shelter"]
