@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from .pet import Pet
-from .shelter import adopt_one, return_one, snapshot
-
-import random
+from .shelter import adopt_one, return_one
 
 class Cat(Pet):
+    """cat pet class"""
+
     ASCII_ART = (
         "            (\\(\\\n"
         "            / ..(\n"
@@ -17,10 +17,11 @@ class Cat(Pet):
         "   '----,)\n"
     )
     ALLOWED_TOYS = {"cardboard", "feather", "mouse"}
+    ALLOWED_FOODS = {"meat", "fish", "treat"}
 
     def __init__(self, name: str) -> None:
         super().__init__(name=name, species="cat")
-    
+   
     @classmethod
     def adopt(cls, name: str) -> "Cat":
         adopt_one("cat")
@@ -36,11 +37,12 @@ class Cat(Pet):
             raise TypeError("amount must be an int")
         if amount <= 0:
             raise ValueError("amount must be greater than 0")
+        food_type = food_type.lower().strip()
         
-        if("fish" in food_type or "meat" in food_type):
+        if("fish" == food_type or "meat" == food_type):
             self.hunger -= 10*amount
             self.health += 7*amount
-        elif("treat" in food_type):
+        elif("treat" == food_type):
             self.hunger -= 6*amount
             self.health += 3*amount
         else:
@@ -60,14 +62,19 @@ class Cat(Pet):
         if type_of_toy.strip().lower() not in self.ALLOWED_TOYS:
             raise ValueError("toy must be one of: cardboard, feather, mouse")
         
-        interest = random.randint(1, 3)
+        type_of_toy = type_of_toy.lower().strip()
+        interest = 0
+        if type_of_toy == "cardboard":
+            interest = 1
+        elif type_of_toy == "feather":
+            interest = 2
+        else:
+            interest = 3
         self.boredom -= interest*10
         self.exhaustion += interest*5
         self.hunger += interest*3
 
-        if self.hunger >= 100 or self.exhaustion >= 100:
-            self.health -= 20
-        elif self.hunger > 85 or self.exhaustion > 85:
+        if self.hunger > 85 or self.exhaustion > 85:
             self.health -= 10
 
         self._clamp_all()
@@ -87,9 +94,7 @@ class Cat(Pet):
         self.exhaustion -= time * 2
         self.hunger += time
 
-        if self.hunger >= 100 or self.exhaustion >= 100:
-            self.health -= 20
-        elif self.hunger > 85 or self.exhaustion > 85:
+        if self.hunger > 85 or self.exhaustion > 85:
             self.health -= 10
 
         self._clamp_all()
@@ -112,7 +117,7 @@ class Cat(Pet):
 
     def _check_runaway(self) -> None:
         """Return pet to shelter when critical stats reach zero."""
-        if self.health == 0 or self.boredom == 0 or self.exhaustion == 0:
+        if self.health == 0 or self.hunger == 100 or self.exhaustion == 100:
             if not self.in_shelter:
                 self.in_shelter = True
                 return_one("cat", self.name)

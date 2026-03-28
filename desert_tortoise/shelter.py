@@ -6,6 +6,7 @@ from __future__ import annotations
 SHELTER_INVENTORY: dict[str, list[dict[str, str]]] = {
     "parrot": [{"species": "parrot", "default_name": "Sunny"}],
     "tortoise": [{"species": "tortoise", "default_name": "Ruby"}],
+    "cat": [{"species": "cat", "default_name": "Kitty"}],
 }
 
 
