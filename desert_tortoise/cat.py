@@ -101,19 +101,8 @@ class Cat(Pet):
         self._check_runaway()
         return self.status()
 
-    def status(self) -> dict[str, object]:
-        """Return this pet's current state."""
-        return {
-            "name": self.name,
-            "species": self.species,
-            "health": self.health,
-            "exhaustion": self.exhaustion,
-            "boredom": self.boredom,
-            "hunger": self.hunger,
-            "mood": self._mood(),
-            "ascii_art": self.ASCII_ART,
-            "in_shelter": self.in_shelter,
-        }
+    def _extra_status(self) -> dict[str, object]:
+        return {"ascii_art": self.ASCII_ART}
 
     def _check_runaway(self) -> None:
         """Return pet to shelter when critical stats reach zero."""
