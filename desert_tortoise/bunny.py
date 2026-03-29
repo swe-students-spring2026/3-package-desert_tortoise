@@ -119,15 +119,5 @@ class Bunny(Pet):
                 self.in_shelter = True
                 return_one("bunny", self.name)
 
-    def status(self) -> dict[str, object]:
-        return {
-            "name": self.name,
-            "species": self.species,
-            "health": self.health,
-            "exhaustion": self.exhaustion,
-            "boredom": self.boredom,
-            "hunger": self.hunger,
-            "mood": self._mood(),
-            "ascii_art": self.ASCII_ART,
-            "in_shelter": self.in_shelter,
-        }
+    def _extra_status(self) -> dict[str, object]:
+        return {"ascii_art": self.ASCII_ART}

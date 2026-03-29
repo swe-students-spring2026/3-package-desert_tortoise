@@ -48,13 +48,28 @@ class Pet(ABC):
     def sleep(self, time: int = 5) -> dict[str, object]:
         """Put this pet to sleep for some amount of time."""
 
-    @abstractmethod
     def status(self) -> dict[str, object]:
         """Return this pet's current state."""
+        base_status = {
+            "name": self.name,
+            "species": self.species,
+            "health": self.health,
+            "exhaustion": self.exhaustion,
+            "boredom": self.boredom,
+            "hunger": self.hunger,
+            "mood": self._mood(),
+            "in_shelter": self.in_shelter,
+        }
+        base_status.update(self._extra_status())
+        return base_status
 
     @abstractmethod
     def _check_runaway(self) -> None:
         """Return pet to shelter when critical stats reach zero."""
+
+    def _extra_status(self) -> dict[str, object]:
+        """Species-specific status fields."""
+        return {}
 
     def _mood(self) -> str:
         if self.health <= 25:
