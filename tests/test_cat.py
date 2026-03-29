@@ -95,6 +95,12 @@ def test_feed_nonpositive_amount_raises_value_error():
     with pytest.raises(ValueError):
         pet.feed("fish", -1)
 
+def test_feed_cat_in_shelter_raises_runtime_error():
+    pet = Cat.adopt("Kitty")
+    pet.in_shelter = True
+    with pytest.raises(RuntimeError):
+        pet.feed("meat")
+
 #test play
 def test_play_cardboard_stats():
     pet = Cat.adopt("Kitty")
@@ -151,6 +157,12 @@ def test_play_invalid_toy_type_raises_type_error():
     with pytest.raises(TypeError):
         pet.play(123)  # type: ignore[arg-type]
 
+def test_play_cat_in_shelter_raises_runtime_error():
+    pet = Cat.adopt("Kitty")
+    pet.in_shelter = True
+    with pytest.raises(RuntimeError):
+        pet.play("feather")
+
 #test sleep
 def test_sleep_stats():
     pet = Cat.adopt("Kitty")
@@ -181,6 +193,12 @@ def test_sleep_nonpositive_time_raises_value_error():
 
     with pytest.raises(ValueError):
         pet.sleep(-2)
+
+def test_sleep_cat_in_shelter_raises_runtime_error():
+    pet = Cat.adopt("Kitty")
+    pet.in_shelter = True
+    with pytest.raises(RuntimeError):
+        pet.sleep(2)
 
 #test status
 def test_status_returns_expected_keys():
