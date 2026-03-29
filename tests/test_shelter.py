@@ -12,8 +12,7 @@ def reset_shelter_inventory():
             "tortoise": [{"species": "tortoise", "default_name": "Ruby"}],
         }
     )
-
-
+    
 def test_has_available_returns_true_for_existing_species():
     assert shelter.has_available("parrot") is True
     assert shelter.has_available("tortoise") is True
