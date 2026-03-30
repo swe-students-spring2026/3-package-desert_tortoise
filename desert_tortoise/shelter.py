@@ -8,6 +8,7 @@ SHELTER_INVENTORY: dict[str, list[dict[str, str]]] = {
     "bunny": [{"species": "bunny", "default_name": "Clover"}],
     "tortoise": [{"species": "tortoise", "default_name": "Ruby"}],
     "dog": [{"species": "dog", "default_name": "Bella"}],
+    "cat": [{"species": "cat", "default_name": "Kitty"}],
 }
 
 
