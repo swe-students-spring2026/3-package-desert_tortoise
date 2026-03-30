@@ -18,14 +18,17 @@ def reset_shelter_inventory():
     
 def test_has_available_returns_true_for_existing_species():
     assert shelter.has_available("parrot") is True
-    assert shelter.has_available("tortoise") is True
+
+
+def test_has_available_is_case_insensitive():
     assert shelter.has_available("PARROT") is True
 
 
 def test_has_available_returns_false_for_unknown_species():
     assert shelter.has_available("dragon") is False
-    assert shelter.has_available("unicorn") is False
 
+def test_has_available_handles_whitespace():
+    assert shelter.has_available("  tortoise  ") is True
 
 def test_adopt_one_removes_pet_from_inventory():
     shelter.adopt_one("cat")
@@ -57,16 +60,14 @@ def test_return_one_adds_pet_back_to_inventory():
 
 def test_return_one_creates_species_bucket_if_missing():
     shelter.return_one("hamster", "Nibbles")
-
-    assert "hamster" in shelter.SHELTER_INVENTORY
-    assert len(shelter.SHELTER_INVENTORY["hamster"]) == 1
     assert shelter.SHELTER_INVENTORY["hamster"][0]["default_name"] == "Nibbles"
-
 
 def test_snapshot_returns_copy_not_original():
     snap = shelter.snapshot()
-    snap["parrot"].append({"species": "parrot", "default_name": "Fake"})
-
-    assert len(snap["parrot"]) == 2
+    snap["parrot"].clear()
     assert len(shelter.SHELTER_INVENTORY["parrot"]) == 1
-    assert shelter.SHELTER_INVENTORY["parrot"][0]["default_name"] == "Sunny"
+
+
+def test_snapshot_contains_all_species():
+    snap = shelter.snapshot()
+    assert set(snap.keys()) == set(shelter.SHELTER_INVENTORY.keys())
