@@ -1,4 +1,7 @@
-# Python Package Exercise
+[![Pythong build & test](https://github.com/swe-students-spring2026/3-package-desert_tortoise/actions/workflows/build.yml/badge.svg)](https://github.com/swe-students-spring2026/3-package-desert_tortoise/actions/workflows/build.yml)
 
-An exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+# Adopt A Pet Python Package
+
+A lighthearted Python Package that simulates adopting and caring for a virtual pet.
+
 # test
