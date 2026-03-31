@@ -1,6 +1,6 @@
 [project]
 name = "desert-tortoise-virtual-pet-package"
-version = "1.0.0"
+version = "1.0.1"
 license = { file = "LICENSE" }
 readme = "README.md"
 classifiers = [
