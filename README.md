@@ -168,11 +168,11 @@ Workflow file:
 
 ## Team Member
 
-[Kara](https://github.com/cynikjinchen)
-[Grace](https://github.com/grace350)
-[Prabhav Jalan](https://github.com/prabhav-jalan)
-[Caleb](https://github.com/calebjawharjian)
-[Ginny](https://github.com/ginny1536)
+- [Kara](https://github.com/cynikjinchen)
+- [Grace](https://github.com/grace350)
+- [Prabhav Jalan](https://github.com/prabhav-jalan)
+- [Caleb](https://github.com/calebjawharjian)
+- [Ginny](https://github.com/ginny1536)
 
 ## Environment variables and secret files
 
@@ -182,4 +182,5 @@ If this changes in the future, include an env.example file with dummy values and
 
 ## License
 
-MIT License. See LICENSE for details.
+MIT License. 
+See [License](https://github.com/swe-students-spring2026/3-package-desert_tortoise/blob/main/README.md) for details.
