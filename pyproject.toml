@@ -1,0 +1,14 @@
+[project]
+name = "desert-tortoise-pet-package"
+version = "1.0.0"
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/swe-students-spring2026/3-package-desert_tortoise"
