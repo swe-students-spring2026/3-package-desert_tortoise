@@ -4,4 +4,12 @@
 
 A lighthearted Python Package that simulates adopting and caring for a virtual pet.
 
-# test
+## PyPI Website
+[Our Package's PyPI Website](https://pypi.org/project/desert-tortoise-virtual-pet-package/1.0.0/)
+
+## Team Member
+[Kara](https://github.com/cynikjinchen)
+[Grace](https://github.com/grace350)
+[Prabhav Jalan](https://github.com/prabhav-jalan)
+[Caleb](https://github.com/calebjawharjian)
+[Ginny](https://github.com/ginny1536)
