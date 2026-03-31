@@ -1,4 +1,18 @@
-steps:
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v5
 
