@@ -1,18 +1,4 @@
-name: CI
-
-on:
-  pull_request:
-    branches: [main]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        python-version: ["3.11", "3.12"]
-
-    steps:
+steps:
       - name: Checkout repository
         uses: actions/checkout@v5
 
@@ -26,6 +12,9 @@ jobs:
 
       - name: Install dependencies
         run: pipenv install --dev --python ${{ matrix.python-version }}
+
+      - name: Install package in editable mode
+        run: pipenv run pip install -e .
 
       - name: Run tests with pytest
         run: pipenv run pytest
