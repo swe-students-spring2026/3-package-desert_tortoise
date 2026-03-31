@@ -177,12 +177,11 @@ def test_status_returns_expected_keys_and_ascii_art():
     assert status["in_shelter"] is False
 
 
-def test_parrot_returns_to_shelter_when_health_hits_zero():
+def test_parrot_returns_to_shelter_when_hunger_hits_100():
     pet = Parrot.adopt("Kiwi")
-    pet.boredom = 10
-
-    # mirror drops boredom by 24, clamping to 0 and triggering runaway check.
-    pet.play("mirror")
+    # hunger reaching 100 should trigger return to shelter
+    pet.hunger = 100
+    pet._check_runaway()
 
     assert pet.in_shelter is True
     assert len(shelter.SHELTER_INVENTORY["parrot"]) == 1
@@ -191,8 +190,9 @@ def test_parrot_returns_to_shelter_when_health_hits_zero():
 
 def test_methods_fail_after_returning_to_shelter():
     pet = Parrot.adopt("Kiwi")
-    pet.boredom = 10
-    pet.play("mirror")
+    # force return to shelter via new rule
+    pet.hunger = 100
+    pet._check_runaway()
 
     with pytest.raises(RuntimeError):
         pet.feed("seeds", 1)

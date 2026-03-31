@@ -1,5 +1,3 @@
-"""Concrete bunny pet implementation."""
-
 from __future__ import annotations
 
 from .pet import Pet
@@ -114,7 +112,7 @@ class Bunny(Pet):
         return self.status()
 
     def _check_runaway(self) -> None:
-        if self.health == 0 or self.boredom == 0 or self.exhaustion == 0:
+        if self.health == 0 or self.hunger == 100 or self.exhaustion == 100:
             if not self.in_shelter:
                 self.in_shelter = True
                 return_one("bunny", self.name)
