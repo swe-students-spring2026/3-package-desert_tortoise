@@ -1,5 +1,3 @@
-"""Concrete dog pet implementation."""
-
 from __future__ import annotations
 
 from .pet import Pet

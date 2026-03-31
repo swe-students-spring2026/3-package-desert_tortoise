@@ -1,5 +1,3 @@
-"""Shared shelter inventory for all pet species."""
-
 from __future__ import annotations
 
 # Species inventory can scale as new pets are added.
@@ -28,7 +26,7 @@ def adopt_one(species: str) -> dict[str, str]:
 
 
 def return_one(species: str, default_name: str) -> None:
-    """Return a pet back to shelter inventory."""
+    """Return a pet back to shelter inventory"""
     key = species.strip().lower()
     SHELTER_INVENTORY.setdefault(key, []).append(
         {"species": key, "default_name": default_name}
@@ -36,5 +34,5 @@ def return_one(species: str, default_name: str) -> None:
 
 
 def snapshot() -> dict[str, list[dict[str, str]]]:
-    """Read-only copy of shelter inventory for debugging or status views."""
+    """Read-only copy of shelter inventory"""
     return {species: pets.copy() for species, pets in SHELTER_INVENTORY.items()}
